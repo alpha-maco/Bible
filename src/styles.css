@@ -89,7 +89,7 @@ button {
   position: relative;
   flex: 1;
   min-height: 780px;
-  overflow: hidden;
+  overflow: auto;
   border: 1px solid rgba(38, 56, 49, 0.16);
   border-radius: 8px;
   background:
@@ -98,6 +98,12 @@ button {
     rgba(255, 252, 244, 0.62);
   background-size: 34px 34px;
   box-shadow: 0 24px 70px rgba(40, 52, 42, 0.12);
+}
+
+.flow-canvas {
+  position: relative;
+  width: max(100%, 1120px);
+  min-height: 1040px;
 }
 
 .flow-lines {
@@ -492,6 +498,11 @@ button {
     min-height: 920px;
   }
 
+  .flow-canvas {
+    width: max(100%, 1120px);
+    min-height: 1040px;
+  }
+
   .flow-node {
     width: 118px;
     min-height: 68px;
@@ -513,15 +524,15 @@ button {
 
   .flow-wrap {
     min-height: 1080px;
-    overflow-x: auto;
   }
 
-  .flow-lines {
-    min-width: 760px;
+  .flow-canvas {
+    width: 1120px;
+    min-height: 1080px;
   }
 
   .flow-node {
-    width: 112px;
+    width: 118px;
     padding: 11px 10px;
   }
 
