@@ -12,40 +12,42 @@ function GenealogyFlow({ nodes, selectedNodeId, onSelectNode }: GenealogyFlowPro
 
   return (
     <div className="flow-wrap">
-      <div className="flow-canvas">
-        <svg className="flow-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-              <path d="M0,0 L8,4 L0,8 Z" fill="currentColor" />
-            </marker>
-          </defs>
-          {nodes.flatMap((node) =>
-            node.connections.map((targetId) => {
-              const target = nodeById.get(targetId);
-              if (!target) return null;
+      <div className="flow-scale">
+        <div className="flow-canvas">
+          <svg className="flow-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="currentColor" />
+              </marker>
+            </defs>
+            {nodes.flatMap((node) =>
+              node.connections.map((targetId) => {
+                const target = nodeById.get(targetId);
+                if (!target) return null;
 
-              return (
-                <line
-                  key={`${node.id}-${target.id}`}
-                  x1={node.x}
-                  y1={node.y}
-                  x2={target.x}
-                  y2={target.y}
-                  markerEnd="url(#arrowhead)"
-                />
-              );
-            }),
-          )}
-        </svg>
+                return (
+                  <line
+                    key={`${node.id}-${target.id}`}
+                    x1={node.x}
+                    y1={node.y}
+                    x2={target.x}
+                    y2={target.y}
+                    markerEnd="url(#arrowhead)"
+                  />
+                );
+              }),
+            )}
+          </svg>
 
-        {nodes.map((node) => (
-          <FlowNode
-            key={node.id}
-            node={node}
-            isSelected={node.id === selectedNodeId}
-            onSelect={(clientX, clientY) => onSelectNode(node.id, clientX, clientY)}
-          />
-        ))}
+          {nodes.map((node) => (
+            <FlowNode
+              key={node.id}
+              node={node}
+              isSelected={node.id === selectedNodeId}
+              onSelect={(clientX, clientY) => onSelectNode(node.id, clientX, clientY)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
