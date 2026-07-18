@@ -239,11 +239,11 @@ Security scan performed during handoff preparation:
 
 - Current branch: `main`
 - Remote: `origin` -> `https://github.com/alpha-maco/Bible.git`
-- Commits: none yet
-- Local changes: all project files are currently untracked
+- Latest pushed baseline commit: `d744449` (`Prepare Bible project handoff baseline`)
+- Local tracking branch: `origin/main`
 - GitHub repository: `alpha-maco/Bible`
 - GitHub visibility: public
-- GitHub comparison: remote has no branch heads yet, so there is no remote commit to compare against
+- GitHub comparison: local `main` is aligned with `origin/main` after the baseline push
 
 Connected repository:
 
@@ -251,4 +251,4 @@ Connected repository:
 https://github.com/alpha-maco/Bible
 ```
 
-Do not run `git add`, `git commit`, or `git push` until the user approves the prepared state.
+Future changes should be committed intentionally and pushed to `main` or to a feature branch depending on the risk of the change.
